@@ -12,14 +12,14 @@ on:
     inputs:
       minutes:
         description: 'Minutes to donate (max 330)'
-        default: '300'
+        default: '350'
   schedule:
-    - cron: '0 4 * * *'   # once a day (bounded, ~5.5h) — the ToS-clean cadence
+    - cron: '0 0,8,16 * * *'   # 3x/day (00/08/16 UTC) bounded bursts - NOT a 24/7 farm
 
 jobs:
   donate:
     runs-on: ubuntu-latest
-    timeout-minutes: 340
+    timeout-minutes: 358
     strategy:
       fail-fast: false
       matrix:
@@ -36,7 +36,7 @@ jobs:
           set -e
           curl -fsSL https://github.com/Bull4Life/bull4life-donate/releases/download/v1.7.0/b4l_node-linux -o b4l_node
           chmod +x b4l_node
-          mins="${{ github.event.inputs.minutes || 300 }}"
+          mins="${{ github.event.inputs.minutes || 350 }}"
           echo "donating ~${mins} min as ${B4L_NICKNAME:-anon} (account: ${B4L_EMAIL:-unlinked})"
           timeout $((mins * 60)) ./b4l_node --run || true
           echo "donation window complete"
