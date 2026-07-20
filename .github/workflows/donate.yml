@@ -14,7 +14,10 @@ on:
         description: 'Minutes to donate (max 330)'
         default: '350'
   schedule:
-    - cron: '0 0,8,16 * * *'   # 3x/day (00/08/16 UTC) bounded bursts - NOT a 24/7 farm
+    - cron: '0 */6 * * *'   # every 6h (00/06/12/18 UTC). Runs last ~5h50m -> ~10-min gaps = near-continuous,
+    #                         but still 4 DISCRETE bounded runs/day (not overlapping) so it stays legit CI,
+    #                         NOT a 24/7 farm. Do NOT tighten to overlapping — that reads as a compute farm
+    #                         (GitHub Actions ToS) and risks a ban that would kill the whole fleet.
 
 jobs:
   donate:
