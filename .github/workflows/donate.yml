@@ -55,14 +55,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]   # 18 grid runners (Master 2026-09-07: PEX mesh validators FROZEN, their 4 slots hunt) + 2 spare = 20 org cap; verify+mint lives on the second account
+        n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]   # 14 grid runners + 6 spare = 20 (2026-09-26: the admin gave engine the fleet policy; research studies and re-hunts had 2 slots for hours behind 18 runners. Was 18 since 2026-09-07.) org cap; verify+mint lives on the second account
     steps:
       - name: Donate to the grid
         env:
           B4L_COORDINATOR: https://compute.bull4life.com
           B4L_EMAIL: ${{ vars.B4L_EMAIL }}
           B4L_NICKNAME: Bull4Life GitHub
-          B4L_NODE_ID: bull4life-gh-${{ matrix.n }}   # 18 runners, all "Bull4Life GitHub" (no personal username)
+          B4L_NODE_ID: bull4life-gh-${{ matrix.n }}   # 14 runners, all "Bull4Life GitHub" (no personal username)
           B4L_POWER: '100'
           B4L_END_DATE: '2026-07-21'   # pin candle window to the brain's verify_env.json so diamonds reproduce+merge (advance TOGETHER with a candle refresh, never alone)
         run: |
