@@ -54,9 +54,8 @@ jobs:
     timeout-minutes: 358
     strategy:
       fail-fast: false
-      # bunny storm until 2026-10-03T20:28Z: 10 runners lent to the spacebunny fleet (tools/bunny_storm.py puts the original back)
       matrix:
-        n: [1, 2, 3, 4]   # 14 grid runners + 6 spare = 20 (2026-09-26: the admin gave engine the fleet policy; research studies and re-hunts had 2 slots for hours behind 18 runners. Was 18 since 2026-09-07.) org cap; verify+mint lives on the second account
+        n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]   # 14 grid runners + 6 spare = 20 (2026-09-26: the admin gave engine the fleet policy; research studies and re-hunts had 2 slots for hours behind 18 runners. Was 18 since 2026-09-07.) org cap; verify+mint lives on the second account
     steps:
       - name: Donate to the grid
         env:
