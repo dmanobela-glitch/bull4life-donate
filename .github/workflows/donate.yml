@@ -55,7 +55,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]   # 14 grid runners + 6 spare = 20 (2026-09-26: the admin gave engine the fleet policy; research studies and re-hunts had 2 slots for hours behind 18 runners. Was 18 since 2026-09-07.) org cap; verify+mint lives on the second account
+        n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]  # 10-09 admin: 25 nodes per account (gussy + personal)
+        #14 grid runners + 6 spare = 20 (2026-09-26: the admin gave engine the fleet policy; research studies and re-hunts had 2 slots for hours behind 18 runners. Was 18 since 2026-09-07.) org cap; verify+mint lives on the second account
     steps:
       - name: Donate to the grid
         env:
